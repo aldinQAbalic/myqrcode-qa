@@ -6,9 +6,7 @@ test.describe('QR types – content step @regression', () => {
     test(`${type}: card opens the content step`, async ({ generator, page }) => {
       await generator.open();
       await generator.choose(type);
-      await expect(page.getByRole('heading', { level: 1 })).toHaveText(
-        new RegExp(`Add content to the .*QR code`, 'i'),
-      );
+      await expect(page.getByRole('heading', { level: 1 })).toHaveText(new RegExp(`Add content to the .*QR code`, 'i'));
       await expect(page.getByRole('button', { name: 'Next', exact: true })).toBeVisible();
       await expect(page.getByRole('link', { name: 'Back' })).toHaveAttribute('href', '/generator');
     });

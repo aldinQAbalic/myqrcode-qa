@@ -1,17 +1,17 @@
 # myqrcode.com – QA hub i test strategija
 
-*Verzija 1.0 · 28.09.2026 · Projekat za vježbu (portfolio). Okruženje: samo produkcija, bez staginga.*
+_Verzija 1.0 · 28.09.2026 · Projekat za vježbu (portfolio). Okruženje: samo produkcija, bez staginga._
 
 ## Dokumenti u hubu
 
-| # | Dokument | Svrha |
-|---|---|---|
-| 01 | Test strategija (ovaj) | Obim, pristup, okruženja, rizici, kriteriji |
-| 02 | Mapa funkcionalnosti | Šta aplikacija radi, rute, selektori, prioritet |
-| 03 | P0 test slučajevi | Kritični scenariji, veza s automatizacijom |
-| 04 | Šablon za bug | Kako prijaviti defekt |
-| 05 | Release checklist | Provjera prije/poslije izdanja |
-| – | Repo `myqrcode-qa` | Playwright + TS, POM, CI |
+| #   | Dokument               | Svrha                                           |
+| --- | ---------------------- | ----------------------------------------------- |
+| 01  | Test strategija (ovaj) | Obim, pristup, okruženja, rizici, kriteriji     |
+| 02  | Mapa funkcionalnosti   | Šta aplikacija radi, rute, selektori, prioritet |
+| 03  | P0 test slučajevi      | Kritični scenariji, veza s automatizacijom      |
+| 04  | Šablon za bug          | Kako prijaviti defekt                           |
+| 05  | Release checklist      | Provjera prije/poslije izdanja                  |
+| –   | Repo `myqrcode-qa`     | Playwright + TS, POM, CI                        |
 
 ## 1. Proizvod ukratko
 
@@ -34,12 +34,12 @@ Monetizacija: **7-dnevni pristup za $1.95** koji se automatski obnavlja na **$49
 
 ## 4. Pristup po nivoima
 
-| Nivo | Šta | Alat | Kada |
-|---|---|---|---|
-| Unit (helperi) | Dekodiranje QR-a iz PNG/SVG | Playwright + jsqr/pngjs | Svaki PR |
-| E2E smoke | Javne stranice, anonimni tok, redirect, sign-up zid | Playwright | Svaki PR |
-| E2E regresija | Svi tipovi, dizajn varijante, download, dashboard | Playwright (2 sharda) | Svaku noć 03:00 |
-| Ručno / istraživački | Fizičko skeniranje telefonom, plaćanje u sandboxu, e-mailovi, vizuelni detalji | Telefon (iOS kamera, Android Google Lens) | Prije izdanja |
+| Nivo                 | Šta                                                                            | Alat                                      | Kada            |
+| -------------------- | ------------------------------------------------------------------------------ | ----------------------------------------- | --------------- |
+| Unit (helperi)       | Dekodiranje QR-a iz PNG/SVG                                                    | Playwright + jsqr/pngjs                   | Svaki PR        |
+| E2E smoke            | Javne stranice, anonimni tok, redirect, sign-up zid                            | Playwright                                | Svaki PR        |
+| E2E regresija        | Svi tipovi, dizajn varijante, download, dashboard                              | Playwright (2 sharda)                     | Svaku noć 03:00 |
+| Ručno / istraživački | Fizičko skeniranje telefonom, plaćanje u sandboxu, e-mailovi, vizuelni detalji | Telefon (iOS kamera, Android Google Lens) | Prije izdanja   |
 
 **Piramida:** većina provjere QR sadržaja ide kroz dekodiranje (brzo, deterministički), a mali broj fizičkih skeniranja telefonom potvrđuje da jsqr i stvarni čitači daju isti rezultat.
 
@@ -52,14 +52,14 @@ Monetizacija: **7-dnevni pristup za $1.95** koji se automatski obnavlja na **$49
 
 ## 6. Rizici i ublažavanje
 
-| Rizik | Uticaj | Ublažavanje |
-|---|---|---|
-| Nema `data-testid` atributa | Krhki selektori | Prednost ARIA ulogama, `id`, `value`; sve u POM-u; zatražiti testid za preview i download |
-| Testovi na produkciji | Smeće u bazi, analitika | Blaga paralelnost, prefiks imena, noćna regresija 1× |
-| Social login (Google/Apple) | Ne može se automatizovati | `storageState` snimljen ručno (`npm run auth:save`) |
-| Dizajn smanjuje čitljivost (logo, niski kontrast) | QR se ne skenira | Dekodiranje nakon svake izmjene dizajna |
-| Trial automatski prelazi u skupu pretplatu | Pravni rizik, chargeback | P0 provjere prikaza uslova, otkazivanja i e-mail potvrde |
-| Asinhrona analitika | Flaky testovi | `expect.poll` umjesto fiksnog čekanja |
+| Rizik                                             | Uticaj                    | Ublažavanje                                                                               |
+| ------------------------------------------------- | ------------------------- | ----------------------------------------------------------------------------------------- |
+| Nema `data-testid` atributa                       | Krhki selektori           | Prednost ARIA ulogama, `id`, `value`; sve u POM-u; zatražiti testid za preview i download |
+| Testovi na produkciji                             | Smeće u bazi, analitika   | Blaga paralelnost, prefiks imena, noćna regresija 1×                                      |
+| Social login (Google/Apple)                       | Ne može se automatizovati | `storageState` snimljen ručno (`npm run auth:save`)                                       |
+| Dizajn smanjuje čitljivost (logo, niski kontrast) | QR se ne skenira          | Dekodiranje nakon svake izmjene dizajna                                                   |
+| Trial automatski prelazi u skupu pretplatu        | Pravni rizik, chargeback  | P0 provjere prikaza uslova, otkazivanja i e-mail potvrde                                  |
+| Asinhrona analitika                               | Flaky testovi             | `expect.poll` umjesto fiksnog čekanja                                                     |
 
 ## 7. Ulazni i izlazni kriteriji
 
@@ -68,12 +68,12 @@ Monetizacija: **7-dnevni pristup za $1.95** koji se automatski obnavlja na **$49
 
 ## 8. Ozbiljnost i prioritet bugova
 
-| Ozbiljnost | Primjer |
-|---|---|
+| Ozbiljnost    | Primjer                                                 |
+| ------------- | ------------------------------------------------------- |
 | S1 – kritično | QR ne vodi na cilj, pogrešna naplata, pad logina za sve |
-| S2 – visoko | Jedan format downloada neispravan, analitika ne broji |
-| S3 – srednje | Izmjena dizajna se ne sačuva, loša validacija |
-| S4 – nisko | Tekst, poravnanje, prevod |
+| S2 – visoko   | Jedan format downloada neispravan, analitika ne broji   |
+| S3 – srednje  | Izmjena dizajna se ne sačuva, loša validacija           |
+| S4 – nisko    | Tekst, poravnanje, prevod                               |
 
 ## 9. Metrike
 

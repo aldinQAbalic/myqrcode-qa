@@ -21,7 +21,8 @@ export class DownloadDialog {
   }
 
   formatOption(format: DownloadFormat): Locator {
-    return this.root.getByRole('button', { name: new RegExp(`\\b${format}\\b`, 'i') })
+    return this.root
+      .getByRole('button', { name: new RegExp(`\\b${format}\\b`, 'i') })
       .or(this.root.getByRole('radio', { name: new RegExp(`\\b${format}\\b`, 'i') }))
       .first();
   }
@@ -46,7 +47,10 @@ export class DashboardPage extends BasePage {
   constructor(page: Page) {
     super(page);
     this.createButton = page.getByRole('link', { name: /create qr code/i });
-    this.search = page.getByRole('searchbox').or(page.getByPlaceholder(/search/i)).first();
+    this.search = page
+      .getByRole('searchbox')
+      .or(page.getByPlaceholder(/search/i))
+      .first();
   }
 
   row(name: string): Locator {

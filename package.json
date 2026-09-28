@@ -10,7 +10,9 @@
     "test:headed": "playwright test --headed --project=chromium",
     "typecheck": "tsc --noEmit",
     "report": "playwright show-report",
-    "auth:save": "playwright codegen --save-storage=.auth/user.json https://myqrcode.com/login"
+    "auth:save": "playwright codegen --save-storage=.auth/user.json https://myqrcode.com/login",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "devDependencies": {
     "@playwright/test": "1.56",
@@ -20,8 +22,12 @@
     "dotenv": "^18.0.4",
     "jsqr": "^1.4.0",
     "pngjs": "^7.0.0",
+    "prettier": "^3.9.9",
     "qrcode": "^1.5.4",
     "typescript": "^7.0.2"
   },
-  "private": true
+  "private": true,
+  "engines": {
+    "node": ">=20"
+  }
 }

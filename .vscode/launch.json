@@ -1,0 +1,24 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug current spec (headed)",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["playwright", "test", "${relativeFile}", "--headed", "--project=chromium", "--workers=1"],
+      "env": { "PWDEBUG": "1" },
+      "console": "integratedTerminal",
+      "windows": { "runtimeExecutable": "npx.cmd" }
+    },
+    {
+      "name": "Smoke",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "test:smoke"],
+      "console": "integratedTerminal",
+      "windows": { "runtimeExecutable": "npm.cmd" }
+    }
+  ]
+}

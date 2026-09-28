@@ -2,7 +2,7 @@ name: Nightly regression
 
 on:
   schedule:
-    - cron: '0 1 * * *'   # 01:00 UTC = 03:00 Sarajevo (summer time)
+    - cron: '0 1 * * *' # 01:00 UTC = 03:00 Sarajevo (summer time)
   workflow_dispatch:
 
 jobs:

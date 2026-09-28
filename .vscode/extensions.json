@@ -1,0 +1,9 @@
+{
+  "recommendations": [
+    "ms-playwright.playwright",
+    "esbenp.prettier-vscode",
+    "github.vscode-github-actions",
+    "editorconfig.editorconfig",
+    "yzhang.markdown-all-in-one"
+  ]
+}

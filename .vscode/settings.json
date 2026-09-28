@@ -1,0 +1,15 @@
+{
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "files.eol": "\n",
+  "files.exclude": {
+    "**/node_modules": true
+  },
+  "search.exclude": {
+    "playwright-report": true,
+    "test-results": true
+  },
+  "playwright.reuseBrowser": true,
+  "playwright.showTrace": false,
+  "typescript.preferences.importModuleSpecifier": "relative"
+}

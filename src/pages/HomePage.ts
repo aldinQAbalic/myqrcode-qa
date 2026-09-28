@@ -20,7 +20,9 @@ export class HomePage extends BasePage {
     this.footer = page.locator('footer');
   }
 
-  footerLink(name: 'Prices' | 'About us' | 'Terms of Use' | 'Privacy policy' | 'Contact us' | 'Cancel subscription' | 'FAQ'): Locator {
+  footerLink(
+    name: 'Prices' | 'About us' | 'Terms of Use' | 'Privacy policy' | 'Contact us' | 'Cancel subscription' | 'FAQ',
+  ): Locator {
     return this.page.getByRole('link', { name, exact: true });
   }
 }

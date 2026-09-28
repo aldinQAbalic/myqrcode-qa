@@ -33,13 +33,13 @@ docs/             QA dokumentacija
 
 ## Playwright projekti
 
-| Projekt | Šta | storageState |
-|---|---|---|
-| `unit` | helperi za QR, bez mreže | – |
-| `setup` | login jednom, sprema `.auth/user.json` | – |
-| `chromium` | javni testovi | – |
-| `chromium-auth` | `*.auth.spec.ts` | `.auth/user.json` |
-| `mobile` | testovi tagovani `@mobile` (Pixel 7) | – |
+| Projekt         | Šta                                    | storageState      |
+| --------------- | -------------------------------------- | ----------------- |
+| `unit`          | helperi za QR, bez mreže               | –                 |
+| `setup`         | login jednom, sprema `.auth/user.json` | –                 |
+| `chromium`      | javni testovi                          | –                 |
+| `chromium-auth` | `*.auth.spec.ts`                       | `.auth/user.json` |
+| `mobile`        | testovi tagovani `@mobile` (Pixel 7)   | –                 |
 
 ## Auth (storageState)
 
@@ -69,3 +69,21 @@ Najkrhkiji je `DesignPage.qrPreview` (`svg[viewBox="0 0 320 320"]`) – dobar ka
 
 - Svaki test kreiranja pravi **draft** QR kod na produkciji (ime `qa-auto-…`). Drži regresiju na jednom pokretanju noću.
 - Plaćanje se ne automatizuje na produkciji – samo prikaz cijena i uslova obnove. Checkout testirati samo u sandboxu.
+
+## VS Code
+
+1. `File → Open Folder…` → `myqrcode-qa`. VS Code ponudi preporučene ekstenzije (Playwright Test, Prettier, GitHub Actions) – prihvati.
+2. U terminalu (`Ctrl+ö` / `Terminal → New Terminal`): `npm ci` pa `npx playwright install chromium`.
+3. **Testing** panel (ikona epruvete) prikazuje sve testove – pokretanje, debug i „Show browser“ jednim klikom.
+4. `F5` → „Debug current spec (headed)“ pokreće otvoreni spec s Playwright Inspectorom.
+5. Formatiranje: automatski na save (Prettier), ili `npm run format`.
+
+## GitHub
+
+```bash
+git remote add origin https://github.com/<korisnik>/myqrcode-qa.git
+git push -u origin main
+```
+
+Zatim u repou: **Settings → Secrets and variables → Actions** dodaj `TEST_USER_EMAIL` i `TEST_USER_PASSWORD` (kad budeš imao nalog).
+Smoke se pokreće na svaki PR, regresija svaku noć (ili ručno: **Actions → Nightly regression → Run workflow**).

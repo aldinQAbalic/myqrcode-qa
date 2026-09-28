@@ -36,7 +36,9 @@ test.describe('Design step @regression', () => {
   });
 
   test('low-contrast colours – documents current behaviour (no warning expected yet)', async ({ design }) => {
-    test.info().annotations.push({ type: 'exploratory', description: 'Light-on-light QR may not scan; check if UI warns.' });
+    test
+      .info()
+      .annotations.push({ type: 'exploratory', description: 'Light-on-light QR may not scan; check if UI warns.' });
     await design.setColor('Dot color', '#EEEEEE');
     const decoded = await design.decodePreview();
     test.info().annotations.push({ type: 'result', description: `decoded=${decoded}` });
@@ -50,7 +52,10 @@ test.describe('Design step @regression', () => {
   test('uploaded logo (PNG) keeps the code scannable', async ({ design }, testInfo) => {
     const logo = path.join(testInfo.outputDir, 'logo.png');
     fs.mkdirSync(testInfo.outputDir, { recursive: true });
-    fs.writeFileSync(logo, await QRCode.toBuffer('logo', { width: 120, color: { dark: '#E53935FF', light: '#FFFFFFFF' } }));
+    fs.writeFileSync(
+      logo,
+      await QRCode.toBuffer('logo', { width: 120, color: { dark: '#E53935FF', light: '#FFFFFFFF' } }),
+    );
     await design.uploadLogo(logo);
     expect(await design.decodePreview()).toBe(payload);
   });

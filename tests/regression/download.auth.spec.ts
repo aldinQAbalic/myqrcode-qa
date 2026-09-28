@@ -12,7 +12,11 @@ const TARGET = 'https://example.com/download';
 const SHORT_LINK = new RegExp(`^https://${env.shortLinkHost.replace(/\./g, '\\.')}/[A-Za-z0-9]+$`);
 
 test.describe('Download @regression @auth', () => {
-  test('PNG download decodes to the same short link as the preview @smoke', async ({ createUrlDraft, design, downloadDialog }) => {
+  test('PNG download decodes to the same short link as the preview @smoke', async ({
+    createUrlDraft,
+    design,
+    downloadDialog,
+  }) => {
     await createUrlDraft(TARGET);
     const preview = await design.decodePreview();
 
