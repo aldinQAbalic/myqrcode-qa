@@ -73,7 +73,7 @@ Najkrhkiji je `DesignPage.qrPreview` (`svg[viewBox="0 0 320 320"]`) – dobar ka
 ## VS Code
 
 1. `File → Open Folder…` → `myqrcode-qa`. VS Code ponudi preporučene ekstenzije (Playwright Test, Prettier, GitHub Actions) – prihvati.
-2. U terminalu (`Ctrl+ö` / `Terminal → New Terminal`): `npm ci` pa `npx playwright install chromium`.
+2. U terminalu (`Terminal → New Terminal`): `npm ci` pa `npx playwright install chromium`.
 3. **Testing** panel (ikona epruvete) prikazuje sve testove – pokretanje, debug i „Show browser“ jednim klikom.
 4. `F5` → „Debug current spec (headed)“ pokreće otvoreni spec s Playwright Inspectorom.
 5. Formatiranje: automatski na save (Prettier), ili `npm run format`.
